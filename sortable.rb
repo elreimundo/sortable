@@ -1,5 +1,4 @@
 module Sortable
-	extend self
 	def bubble_sort(&block)
 		array = self.map{|x| x}
 		array.each_index do |i|
