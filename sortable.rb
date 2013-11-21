@@ -22,6 +22,11 @@ module Sortable
 		recursive_sort(array,aux,0,array.length - 1,&block)
 	end
 
+	def quick_sort(&block)
+		array = self.map{|x| x}.shuffle
+		q_recursive_sort(array, 0, array.length - 1,&block)
+	end
+
 	def selection_sort(&block)
 		array = self.map{|x| x}
 		array.each_index do |i|
@@ -96,5 +101,27 @@ module Sortable
 			end
 		end
 		part_sorted_arry
+	end
+
+	def q_recursive_sort(array,lo,hi,&block)
+		return array if lo >= hi
+		j = partition(array,lo,hi,&block)
+		q_recursive_sort(array,lo,j-1,&block)
+		q_recursive_sort(array,j+1,hi,&block)
+	end
+
+	def partition(array,lo,hi,&block)
+		i, j = lo, hi + 1
+		while i < j
+			while compare(array[i+=1],array[lo],&block) == -1 
+				break if i == hi
+			end
+			while compare(array[lo],array[j-=1],&block) == -1 
+				break if j == lo
+			end
+			swap(i,j,array) unless i >= j
+		end
+		swap(lo,j,array)
+		j
 	end
 end
