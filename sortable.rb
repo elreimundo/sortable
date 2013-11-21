@@ -12,6 +12,20 @@ module Sortable
 		array
 	end
 
+	def selection_sort(&block)
+		array = self.map{|x| x}
+		array.each_index do |i|
+			min_idx = i
+			j = i
+			while j < array.length
+				min_idx = j if compare(array[j],array[min_idx],&block) == -1
+				j += 1
+			end
+			swap(i,min_idx,array) unless i == min_idx
+		end
+		array
+	end
+
 	def compare(a,b)
 		return yield(a,b) if block_given?
 		a < b ? -1 : a == b ? 0 : 1
