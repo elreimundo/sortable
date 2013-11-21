@@ -14,9 +14,9 @@ module Sortable
 	def h_sort(array,h,&block)
 		array.each_index do |i|
 			j = i
-			while j > 0 && compare(array[j],array[j-1],&block) == -1
+			while j > h-1 && compare(array[j],array[j-h],&block) == -1
 				swap(j,j-1,array)
-				j -= 1
+				j -= h
 			end
 		end
 		array
