@@ -41,6 +41,19 @@ module Sortable
 		array
 	end
 
+	def shell_sort(&block)
+		array = self.map{|x| x}
+		h = 1
+		while h < array.length / 3
+			h = h * 3 + 1
+		end
+		while h >= 1
+			array = h_sort(array,h,&block)
+			h = h / 3
+		end
+		array
+	end
+
 	def compare(a,b)
 		return yield(a,b) if block_given?
 		a < b ? -1 : a == b ? 0 : 1
