@@ -11,17 +11,6 @@ module Sortable
 		array
 	end
 
-	def h_sort(array,h,&block)
-		array.each_index do |i|
-			j = i
-			while j > h-1 && compare(array[j],array[j-h],&block) == -1
-				swap(j,j-h,array)
-				j -= h
-			end
-		end
-		array
-	end
-
 	def insertion_sort(&block)
 		array = self.map{|x| x}
 		h_sort(array,1,&block)
@@ -31,14 +20,6 @@ module Sortable
 		array = self.map {|x| x}
 		aux = Array.new(array.length)
 		recursive_sort(array,aux,0,array.length - 1,&block)
-	end
-
-	def recursive_sort(array,aux,lo,hi,&block)
-		return if hi <= lo
-		mid = lo + (hi - lo) / 2
-		recursive_sort(array,aux,lo,mid,&block)
-		recursive_sort(array,aux,mid+1,hi,&block)
-		merge(array,aux,lo,mid+1,hi,&block)
 	end
 
 	def selection_sort(&block)
@@ -68,6 +49,8 @@ module Sortable
 		array
 	end
 
+	private
+
 	def compare(a,b)
 		return yield(a,b) if block_given?
 		a < b ? -1 : a == b ? 0 : 1
@@ -76,6 +59,25 @@ module Sortable
 	def swap(key1, key2, array = self)
 		array[key1], array[key2] = array[key2], array[key1]
 		array
+	end
+
+	def h_sort(array,h,&block)
+		array.each_index do |i|
+			j = i
+			while j > h-1 && compare(array[j],array[j-h],&block) == -1
+				swap(j,j-h,array)
+				j -= h
+			end
+		end
+		array
+	end
+
+	def recursive_sort(array,aux,lo,hi,&block)
+		return if hi <= lo
+		mid = lo + (hi - lo) / 2
+		recursive_sort(array,aux,lo,mid,&block)
+		recursive_sort(array,aux,mid+1,hi,&block)
+		merge(array,aux,lo,mid+1,hi,&block)
 	end
 
 	def merge(part_sorted_arry,aux,lo,mid,hi,&block)

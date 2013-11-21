@@ -1,15 +1,6 @@
 require_relative 'sortable.rb'
 
 describe Sortable do
-	context "swap(key1,key2)" do
-		it "properly swaps elements in an array" do
-			class Array
-				include Sortable
-			end
-			expect([1,2,3,4].swap(0,3)).to eq([4,2,3,1])
-		end
-	end
-
 	context "bubble_sort" do
 		before :each do
 			class Array
