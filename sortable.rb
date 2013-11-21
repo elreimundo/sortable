@@ -11,8 +11,7 @@ module Sortable
 		array
 	end
 
-	def insertion_sort(&block)
-		array = self.map{|x| x}
+	def h_sort(array,h,&block)
 		array.each_index do |i|
 			j = i
 			while j > 0 && compare(array[j],array[j-1],&block) == -1
@@ -21,6 +20,11 @@ module Sortable
 			end
 		end
 		array
+	end
+
+	def insertion_sort(&block)
+		array = self.map{|x| x}
+		h_sort(array,1,&block)
 	end
 
 	def selection_sort(&block)
