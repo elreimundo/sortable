@@ -15,7 +15,7 @@ module Sortable
 		array.each_index do |i|
 			j = i
 			while j > h-1 && compare(array[j],array[j-h],&block) == -1
-				swap(j,j-1,array)
+				swap(j,j-h,array)
 				j -= h
 			end
 		end
