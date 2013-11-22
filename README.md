@@ -16,7 +16,7 @@ After cloning this repository, you can run the test suite from the repo director
 
 ###methods
 
-Sortable includes five sort methods: bubble\_sort, selection\_sort, insertion\_sort, shell\_sort, merge\_sort, and quick\_sort. 
+Sortable includes six sort methods: bubble\_sort, selection\_sort, insertion\_sort, shell\_sort, merge\_sort, and quick\_sort. 
 
 ###requirements
 
