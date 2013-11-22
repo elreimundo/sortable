@@ -5,7 +5,7 @@ class Array
 	include Sortable
 end
 
-SORTABLE_METHODS = [:insertion_sort, :selection_sort, :bubble_sort, :shell_sort, :merge_sort]
+SORTABLE_METHODS = [:insertion_sort, :selection_sort, :bubble_sort, :shell_sort, :merge_sort, :quick_sort]
 
 n = ARGV[0] ? ARGV[0].to_i : 10000
 test_array = Array.new(n){rand(100)}

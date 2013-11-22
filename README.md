@@ -16,7 +16,7 @@ After cloning this repository, you can run the test suite from the repo director
 
 ###methods
 
-Sortable includes five sort methods: bubble\_sort, selection\_sort, insertion\_sort, shell\_sort, and merge\_sort. 
+Sortable includes five sort methods: bubble\_sort, selection\_sort, insertion\_sort, shell\_sort, merge\_sort, and quick\_sort. 
 
 ###requirements
 
@@ -51,10 +51,10 @@ You can then include the Sortable module in any class as you would any Ruby modu
 
 ## Speed Tests
 
-The whole purpose behind good algorithm design is to optimize the code's performance in time (how long the code takes to run) and space (how much memory the code requires). In order to demonstrate how much faster are the efficient algorithms (shell\_sort and merge\_sort) than the less efficient algorithms, this repo comes with a file designed to benchmark the performance of each method in Sortable.
+The whole purpose behind good algorithm design is to optimize the code's performance in time (how long the code takes to run) and space (how much memory the code requires). In order to demonstrate how much faster are the efficient algorithms (shell\_sort, merge\_sort, and quick\_sort) than the less efficient algorithms, this repo comes with a file designed to benchmark the performance of each method in Sortable.
 
 The benchmark sorts a randomly-generated array of default size 10,000 integers. To view this benchmark, simply run (with optional array_size argument)
 
-    $ ruby speed_test.rb [array_size]
+    $ ruby speed_test.rb array_size
 
 Please note that, due to the inefficiency of the slower tests, increasing the default array size significantly beyond 10,000 is strongly discouraged. One additional note: the Ruby interpreter will not read comma-delimited numbers properly; the correct way to indicate 10,000 is either `10000` (no comma) or `10_000` (underscore-delimited)
